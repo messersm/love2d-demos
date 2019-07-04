@@ -102,18 +102,29 @@ menu = newScene()
 
 function menu.load(self)
     self.bg = love.graphics.newImage("res/menu.png")
-    self.lightning = sprite.AnimatedSprite.new(DATA.spritesheets.lightning)
+    self.alpha = 1
+    self.dalpha = -1
+    -- self.lightning = sprite.AnimatedSprite.new(DATA.spritesheets.lightning)
 end
 
 function menu.draw(self)
     love.graphics.draw(self.bg, 0, 0)
-    love.graphics.print("Catching Lightning", 100, 100)
-    love.graphics.print("Tab to start.", 100, 500)
-    self.lightning:draw()
+    love.graphics.printf("Catching Lightning", 0, 100, 1920, "center")
+    love.graphics.setColor(1, 1, 1, self.alpha)
+    love.graphics.printf("Tab to start", 0, 900, 1920, "center")
+    love.graphics.setColor(1, 1, 1, 1)
+    -- self.lightning:draw()
 end
 
 function menu.update(self, dt)
-    self.lightning:update(dt)
+    self.alpha = self.alpha + self.dalpha * dt
+    if self.alpha < 0 then
+        self.alpha = 0
+        self.dalpha = 1
+    elseif self.alpha > 1 then
+        self.alpha = 1
+        self.dalpha = -1
+    end
 end
 
 function menu.mousepressed(self, x, y, button, isTouch)
@@ -253,13 +264,13 @@ scene = menu
 function love.load()
     love.window.setFullscreen(true)
 
-    -- music = love.audio.newSource("res/music.ogg", "stream")
-    -- music:setLooping(true)
-    -- love.audio.play(music)
+    music = love.audio.newSource("res/music.ogg", "stream")
+    music:setLooping(true)
+    love.audio.play(music)
 
-    rainsnd = love.audio.newSource("res/rain.ogg", "stream")
-    rainsnd:setLooping(true)
-    love.audio.play(rainsnd)
+    -- rainsnd = love.audio.newSource("res/rain.ogg", "stream")
+    -- rainsnd:setLooping(true)
+    -- love.audio.play(rainsnd)
 
     loadSpritesheets(DATA.spritesheets)
 

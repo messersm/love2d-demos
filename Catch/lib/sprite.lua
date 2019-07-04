@@ -2,7 +2,7 @@
 local AnimatedSprite = {}
 
 AnimatedSprite.new = function(sheet)
-    local sprite = {time=0, frameno=1, sheet=sheet}
+    local sprite = {x=0, y=0, time=0, frameno=1, sheet=sheet}
     setmetatable(sprite, AnimatedSprite)
     sprite:setAnimation(sheet.default_animation)
     return sprite
@@ -30,9 +30,9 @@ AnimatedSprite.prototype.draw = function(self, x, y)
     local r = frame.r or 0
     local sx = frame.sx or 1
     local sy = frame.sy or 1
-    local posx = x or self.x or 0
-    local posy = y or self.y or 0
-    love.graphics.draw(self.sheet.image, quad, posx, posy, r, sx, sy)
+    local x = x or self.x
+    local y = y or self.y
+    love.graphics.draw(self.sheet.image, quad, x, y, posy, r, sx, sy)
 end
 
 AnimatedSprite.prototype.setAnimation = function(self, name, restart)
@@ -54,4 +54,4 @@ AnimatedSprite.__index = function(sprite, key)
     return AnimatedSprite.prototype[key]
 end
 
-return {AnimatedSprite=AnimatedSprite}
+return {AnimatedSprite=AnimatedSprite, AnimatedText=AnimatedText}
