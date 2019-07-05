@@ -1,3 +1,5 @@
+local gfx = require "lib/gfx"
+
 function love.load()
     -- Some information about exiting and used artwork
     infotext = {
@@ -24,7 +26,8 @@ function love.load()
     }
 
     -- particles and bolts
-    raindrops = generate_drops(1000)
+    rain_gfx = gfx.RainGFX.new()
+    -- drops = generate_drops(1000)
     bolts = {}
     next_bolt_in = 2
     last_bolt = nil
@@ -43,15 +46,7 @@ function love.draw()
         end
     end
 
-    -- draw rain
-    local r, g, b, a = love.graphics.getColor()
-    love.graphics.setColor(0.5, 0.5, 0.5, 0.1)
-
-    for _, drop in pairs(raindrops) do
-        love.graphics.line(drop.x, drop.y, drop.x, drop.y + drop.length)
-    end
-    -- reset color
-    love.graphics.setColor(r, g, b, a)
+    rain_gfx:draw()
 
     if debug and last_bolt then
         local msg = string.format(
@@ -90,13 +85,7 @@ function love.update(dt)
         table.insert(bolts, last_bolt)
     end
 
-    -- update rain movement
-    for _, drop in pairs(raindrops) do
-        drop.y = drop.y + drop.speed * dt
-        if drop.y > SCREEN_HEIGHT then
-            drop.y = drop.y - SCREEN_HEIGHT
-        end
-    end
+    rain_gfx:update(dt)
 end
 
 function love.keypressed(key, scancode, isrepeat)
@@ -105,22 +94,6 @@ function love.keypressed(key, scancode, isrepeat)
     elseif key == "d" then
         debug = not debug
     end
-end
-
-function generate_drops(count)
-    local count = count or 1000
-    local drops = {}
-
-    for i = 1, count, 1 do
-        local drop = {}
-        drop.x = love.math.random(SCREEN_WIDTH)
-        drop.y = love.math.random(SCREEN_HEIGHT)
-        drop.length = love.math.random(10, 50)
-        drop.speed = love.math.random(1000, 1500)
-        table.insert(drops, drop)
-    end
-
-    return drops
 end
 
 function generate_bolt()
