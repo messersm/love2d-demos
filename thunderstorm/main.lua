@@ -27,6 +27,7 @@ function love.load()
 
     -- particles and bolts
     thunderstorm = Thunderstorm.new(thundersounds)
+    -- TODO: Add correct width and height for each layer.
     thunderstorm:addLayer()
     thunderstorm:addLayer()
     thunderstorm:addLayer()

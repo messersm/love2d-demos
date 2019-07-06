@@ -46,6 +46,7 @@ Thunderstorm.prototype.update = function(self, dt)
                 end
             end
 
+            bolt.sound_delay = bolt.sound_delay - dt
             if bolt.sound_delay <= 0 then
                 -- play sound and "discard" bolt
                 love.audio.play(bolt.sound)
