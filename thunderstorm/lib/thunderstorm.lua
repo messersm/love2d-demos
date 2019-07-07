@@ -13,7 +13,8 @@ Thunderstorm = {
 }
 
 Thunderstorm.new = function(sounds, active)
-    local t = {sounds=sounds, layers={}, next_bolt_in=2}
+    local active = active or (active == nil)
+    local t = {sounds=sounds, active=active, layers={}, next_bolt_in=2}
     setmetatable(t, Thunderstorm)
     return t
 end
@@ -48,9 +49,12 @@ Thunderstorm.prototype.update = function(self, dt)
 
             bolt.sound_delay = bolt.sound_delay - dt
             if bolt.sound_delay <= 0 then
-                -- play sound and "discard" bolt
                 love.audio.play(bolt.sound)
-            elseif bolt.pulses[bolt.pulse_idx] ~= nil then
+            end
+
+            -- Keep bolts, which pulses haven't all been
+            -- dispayed yet or which sound hasn't been played.
+            if bolt.sound_delay <= 0 or bolt.pulses[bolt.pulse_idx] ~= nil then
                 table.insert(newbolts, bolt)
             end
         end
@@ -59,7 +63,8 @@ Thunderstorm.prototype.update = function(self, dt)
 
     -- Create a new bolt, if required.
     self.next_bolt_in = self.next_bolt_in - dt
-    if self.next_bolt_in <= 0 then
+    if self.next_bolt_in <= 0 and self.active then
+        -- only add bolts, if we are set to active
         local index = love.math.random(1, #self.layers)
         local bolt = self:newBolt(self.layers[index])
         table.insert(self.layers[index].bolts, bolt)

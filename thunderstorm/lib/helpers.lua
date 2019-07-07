@@ -31,4 +31,32 @@ function parse_keywords(keywords, defaults)
     return t
 end
 
-return {randfloat=randfloat}
+function with_color(f, color, ...)
+    local r, g, b, a = love.graphics.getColor()
+    love.graphics.setColor(color)
+    f(...)
+    love.graphics.setColor(r, g, b, a)
+end
+
+function sprite_from(image, x, y, r, sx, sy)
+    local spr = {}
+    spr.image = image
+    spr.x = x or 0
+    spr.y = y or 0
+    spr.r = r or 0
+    spr.sx = sx or 1
+    spr.sy = sy or 1
+    local width, height = image:getDimensions()
+    spr.width = math.abs(width * spr.sx)
+    spr.height = math.abs(height * spr.sy)
+    return spr
+end
+
+-- build and return the module
+local m = {}
+m.randfloat = randfloat
+m.parse_keywords = parse_keywords
+m.sprite_from = sprite_from
+m.with_color = with_color
+
+return m
