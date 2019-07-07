@@ -16,6 +16,6 @@ download the ``.love``-file and open it with Löve.
 A little scene displaying a thunderstorm in a desolate city.
 It's main focus is generating time-delayed sound and graphics.
 
-**Löve-File:** [thunderstorm.love](love/thunderstorm.love)
+**Löve-File:** [thunderstorm.love](bin/thunderstorm.love)
 
 **Credits:** [Credits](thunderstorm/credits.md)
