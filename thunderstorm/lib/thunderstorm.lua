@@ -66,7 +66,8 @@ Thunderstorm.prototype.update = function(self, dt)
     self.next_bolt_in = self.next_bolt_in - dt
     if self.next_bolt_in <= 0 and self.active then
         -- only add bolts, if we are set to active
-        local index = love.math.random(1, #self.layers)
+        -- local index = love.math.random(1, #self.layers)
+        local index = 1
         local bolt = self:newBolt(self.layers[index])
         table.insert(self.layers[index].bolts, bolt)
         self.next_bolt_in = randfloat(5.0, 10.0)

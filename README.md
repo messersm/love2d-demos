@@ -11,7 +11,7 @@ In order to play them, you have to have Löve installed. Then simply
 download the ``.love``-file and open it with Löve.
 
 ## Thunderstorm
-![Thunderstorm screenshot](thunderstorm/screenshot.png "Thunderstorm screenshot")
+![Thunderstorm screenshot](thunderstorm/screenshot.gif "Thunderstorm screenshot")
 
 A little scene displaying a thunderstorm in a desolate city.
 It's main focus is generating time-delayed sound and graphics.
