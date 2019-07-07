@@ -42,10 +42,9 @@ function love.load()
 
     -- particles and bolts
     thunderstorm = Thunderstorm.new(thundersounds, false)
-    -- TODO: Add correct width and height for each layer.
-    thunderstorm:addLayer()
-    thunderstorm:addLayer()
-    thunderstorm:addLayer()
+    thunderstorm:addLayer({width=1920, height=480, min_sound_delay=5.0, max_sound_delay=5.5})
+    thunderstorm:addLayer({width=1920, height=710, min_sound_delay=3.0, max_sound_delay=3.5})
+    thunderstorm:addLayer({width=1920, height=1080, min_sound_delay=0, max_sound_delay=0})
     rain = RainGFX.new()
 end
 
@@ -92,12 +91,6 @@ function love.update(dt)
         end
     else
         infotext.start = infotext.start - dt
-    end
-end
-
-function love.keypressed(key, scancode, isrepeat)
-    if key == "escape" then
-        love.event.quit()
     end
 end
 

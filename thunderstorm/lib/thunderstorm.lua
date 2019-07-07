@@ -48,13 +48,14 @@ Thunderstorm.prototype.update = function(self, dt)
             end
 
             bolt.sound_delay = bolt.sound_delay - dt
-            if bolt.sound_delay <= 0 then
+            if bolt.sound_delay <= 0 and not bolt.sound_played then
                 love.audio.play(bolt.sound)
+                bolt.sound_played = true
             end
 
             -- Keep bolts, which pulses haven't all been
             -- dispayed yet or which sound hasn't been played.
-            if bolt.sound_delay <= 0 or bolt.pulses[bolt.pulse_idx] ~= nil then
+            if bolt.sound_delay > 0 or bolt.pulses[bolt.pulse_idx] ~= nil then
                 table.insert(newbolts, bolt)
             end
         end
@@ -68,7 +69,7 @@ Thunderstorm.prototype.update = function(self, dt)
         local index = love.math.random(1, #self.layers)
         local bolt = self:newBolt(self.layers[index])
         table.insert(self.layers[index].bolts, bolt)
-        self.next_bolt_in = randfloat(1.0, 10.0)
+        self.next_bolt_in = randfloat(5.0, 10.0)
     end
 
 end
@@ -90,6 +91,7 @@ Thunderstorm.prototype.newBolt = function(self, layer)
     bolt.pulse_idx = 1
     bolt.sound = self.sounds[love.math.random(1, #self.sounds)]
     bolt.sound_delay = randfloat(layer.min_sound_delay, layer.max_sound_delay)
+    bolt.sound_played = false
 
     return bolt
 end
