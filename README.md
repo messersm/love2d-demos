@@ -1,6 +1,6 @@
 # love2d-demos
 A collection of (not necessarily playable) demos written
-in [Löve](https://love2d.org).
+in [Löve](https://love2d.org), mainly used to learn Lua and Löve.
 
 All of the source code is licensed under the [GPLv3](LICENSE).
 The artwork however is subject to miscellaneous licenses, which
