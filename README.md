@@ -25,7 +25,8 @@ It's main focus is generating time-delayed sound and graphics.
 
 A little horror "game", in which you are a circle amongst squares.
 This one has directional sound in it, so earphones may be a good idea.
-I also played around with a pixel shader and am quite pleased with the results. :-)
+It has some collision detection (using [bump](https://github.com/kikito/bump.lua)) and I played around with
+a pixel shader and am quite pleased with the results. :-)
 
 **How to play:** Move with w, a, s, d or the cursor keys. Press escape to exit.
 
