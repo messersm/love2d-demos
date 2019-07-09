@@ -19,3 +19,16 @@ It's main focus is generating time-delayed sound and graphics.
 **Löve-File:** [thunderstorm.love](bin/thunderstorm.love?raw=true)
 
 **Credits:** [Credits](thunderstorm/credits.md)
+
+## A circle amongst squares
+![Circle screenshot](circle-amongst-squares/screenshot.png "A circle amongst squares screenshot")
+
+A little horror "game", in which you are a circle amongst squares.
+This one has directional sound in it, so earphones may be a good idea.
+I also played around with a pixel shader and am quite pleased with the results. :-)
+
+**How to play:** Move with w, a, s, d or the cursor keys. Press escape to exit.
+
+**Löve-File:** [circle-amongst-squares.love](bin/circle-amongst-squares.love?raw=true)
+
+**Credits:** [Credits](circle-amongst-squares/credits.md)
