@@ -1,4 +1,4 @@
-bump = require "bump"
+bump = require "lib.bump"
 
 function with_color(color, f, ...)
     local r, g, b, a = love.graphics.getColor()
