@@ -12,9 +12,9 @@ is_version_tag() {
 }
 
 usage(){
- echo "Usage: sh make-love.sh [version]"
- echo "If no version is given, the version of the"
- echo "current git HEAD is used."
+    echo "Usage: sh make-love.sh [version]"
+    echo "If no version is given, the version of the"
+    echo "current git HEAD is used."
 }
 
 if [ "$1" = "--help" ]; then
@@ -75,7 +75,7 @@ for game in $(find . -maxdepth 1 -type d -printf "%P\n"); do
             lovefile="$lovedir/$game-$current_tag.love"
             echo " * Creating $lovefile"
             mkdir -p "$lovedir" || exit 2
-	        7z a -tzip "$lovefile" -w "$game"/. >> /dev/null || exit 2
+            7z a -tzip "$lovefile" -w "$game"/. >> /dev/null || exit 2
         fi
     fi
 done
