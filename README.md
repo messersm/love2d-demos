@@ -10,6 +10,29 @@ within the demo itself.)
 In order to play them, you have to have Löve installed. Then simply
 download the ``.love``-file and open it with Löve.
 
+## A word on GLES
+If you want to play around with code that uses shaders, etc.
+and use it on mobile, make sure to test it with GLES like
+so:
+```shell
+$ LOVE_GRAPHICS_USE_OPENGLES=1 love game-dir
+```
+
+To make sure, that you're graphics card actually does use GLES,
+here is an example, that **should fail** (complaining
+about initializing x in line 1) if GLES is used and
+should run fine otherwise:
+```lua
+function love.load()
+    shader = love.graphics.newShader([[
+        extern number x = 1.0;
+        vec4 effect(vec4 color, Image tex, vec2 tc, vec2 sc){
+            vec4 pixel = Texel(tex, tc);
+            return pixel;
+    ]])
+end
+```
+
 ## Thunderstorm
 ![Thunderstorm screenshot](thunderstorm/screenshot.gif "Thunderstorm screenshot")
 
