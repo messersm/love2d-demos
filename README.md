@@ -39,7 +39,7 @@ end
 A little scene displaying a thunderstorm in a desolate city.
 It's main focus is generating time-delayed sound and graphics.
 
-**Löve-File:** [thunderstorm.love](bin/thunderstorm.love?raw=true)
+**Löve-File:** [thunderstorm.love](releases/tag/v0.2.0/thunderstorm.love)
 
 **Credits:** [Credits](thunderstorm/credits.md)
 
@@ -53,6 +53,6 @@ a pixel shader and am quite pleased with the results. :-)
 
 **How to play:** Move with w, a, s, d or the cursor keys. Press escape to exit.
 
-**Löve-File:** [circle-amongst-squares.love](bin/circle-amongst-squares.love?raw=true)
+**Löve-File:** [circle-amongst-squares.love](releases/tag/v0.2.1/circle-amongst-squares.love)
 
 **Credits:** [Credits](circle-amongst-squares/credits.md)
