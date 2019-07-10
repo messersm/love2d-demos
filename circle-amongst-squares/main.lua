@@ -75,7 +75,6 @@ function love.load()
     movesound = love.audio.newSource("res/movement.ogg", "static")
     next_move_in = love.math.random(10, 20)
 
-    light = love.graphics.newShader("light.glsl")
     world = bump.newWorld()
     squares = {}
     circle = {x=0, y=0, dx=0, dy=0, speed=100, r=10, color={1, 1, 1, 1}}
@@ -87,6 +86,7 @@ function love.load()
         world:add(square, square.x, square.y, square.width, square.height)
     end
 
+    light = love.graphics.newShader("light.glsl")
     light:send("sourcePos", {circle.x + circle.r, circle.y + circle.r})
 end
 
